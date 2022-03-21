@@ -6,6 +6,7 @@ import Login from "../components/Login/Login";
 import Signup from "../components/Signup/Signup";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../components/Dashboard/Dashboard";
+import NotFound from "../components/NotFound/NotFound";
 
 let allRoutes = [
   {
@@ -43,6 +44,7 @@ const Routes = () => {
               <Route exact key={index} path={path} component={component} />
             );
           })}
+        <Route path="*" exact={true} component={NotFound} />
       </Switch>
     </BrowserRouter>
   );

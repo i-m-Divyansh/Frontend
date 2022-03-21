@@ -1,12 +1,10 @@
 export const Authenticate = (data) => {
   if (typeof window != undefined) {
-    if (data.user.userRole == 0) {
-      let newData = { ...data.user, university: "" };
-      data.user = newData;
-      localStorage.setItem("auth", JSON.stringify(data));
-    } else {
+    if (localStorage.getItem("auth")) {
+      localStorage.removeItem("auth");
       localStorage.setItem("auth", JSON.stringify(data));
     }
+    localStorage.setItem("auth", JSON.stringify(data));
   }
 };
 
