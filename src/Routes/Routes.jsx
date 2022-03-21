@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 //? Components
@@ -10,13 +10,13 @@ import NotFound from "../components/NotFound/NotFound";
 
 let allRoutes = [
   {
-    path: "/signup",
-    component: Signup,
+    path: "/",
+    component: Login,
     isPrivate: false,
   },
   {
-    path: "/",
-    component: Login,
+    path: "/signup",
+    component: Signup,
     isPrivate: false,
   },
   {

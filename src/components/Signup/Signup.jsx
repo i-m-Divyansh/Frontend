@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Signup.module.css";
+import validator from "validator";
 
 //? router
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 //? Axios
 import axios from "../../Axios/Axios";
@@ -74,9 +75,19 @@ const Signup = () => {
       err.email = "Enter Email First!";
     }
 
+    if (!validator.isEmail(email)) {
+      value = false;
+      err.email = "Enter Valid Email First!";
+    }
+
     if (password === "") {
       value = false;
       err.password = "Enter Password First!";
+    }
+
+    if (password.length <= 5) {
+      value = false;
+      err.password = "Enter Password Larger than 5 Digit First!";
     }
 
     setFormError({ ...err });
@@ -194,7 +205,7 @@ const Signup = () => {
               <p>
                 Already have an account?{" "}
                 <span>
-                  <a href="/">Login</a>
+                  <Link to="/">Login</Link>
                 </span>
               </p>
             </div>

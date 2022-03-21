@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Login.module.css";
+import validator from "validator";
 
 //? router
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 //? Axios
 import axios from "../../Axios/Axios";
@@ -55,6 +56,11 @@ const Login = () => {
     if (email === "") {
       value = false;
       err.email = "Enter Email First!";
+    }
+
+    if (!validator.isEmail(email)) {
+      value = false;
+      err.email = "Enter Valid Email First!";
     }
 
     if (password === "") {
@@ -153,7 +159,7 @@ const Login = () => {
               <p>
                 Don't have an account?{" "}
                 <span>
-                  <a href="/signup">Signup</a>
+                  <Link to="/signup">Signup</Link>
                 </span>
               </p>
             </div>
